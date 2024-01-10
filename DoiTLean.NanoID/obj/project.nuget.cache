@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "XJ4+YL486b9ohhJj11aTxuCjHy/LuJHDVrXprCb2b0tMy4dUYDShfBbmNa042MIO8hljfPQ6La2gml2kibLupw==",
+  "success": true,
+  "projectFilePath": "C:\\Repo\\odc-nanoid\\DoiTLean.NanoID\\DoiTLean.NanoID.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fabio.fantato\\.nuget\\packages\\nanoid\\3.0.0\\nanoid.3.0.0.nupkg.sha512",
+    "C:\\Users\\fabio.fantato\\.nuget\\packages\\outsystems.externallibraries.sdk\\1.4.0\\outsystems.externallibraries.sdk.1.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,5 @@
+C:\Repo\odc-nanoid\DoiTLean.NanoID\bin\Release\net6.0\linux-x64\publish\DoiTLean.NanoID.dll
+C:\Repo\odc-nanoid\DoiTLean.NanoID\bin\Release\net6.0\linux-x64\publish\DoiTLean.NanoID.deps.json
+C:\Repo\odc-nanoid\DoiTLean.NanoID\bin\Release\net6.0\linux-x64\publish\DoiTLean.NanoID.pdb
+C:\Repo\odc-nanoid\DoiTLean.NanoID\bin\Release\net6.0\linux-x64\publish\Nanoid.dll
+C:\Repo\odc-nanoid\DoiTLean.NanoID\bin\Release\net6.0\linux-x64\publish\OutSystems.ExternalLibraries.SDK.dll

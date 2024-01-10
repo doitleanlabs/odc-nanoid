@@ -1,0 +1,58 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0/linux-x64",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {},
+    ".NETCoreApp,Version=v6.0/linux-x64": {
+      "DoiTLean.NanoID/1.0.0": {
+        "dependencies": {
+          "Nanoid": "3.0.0",
+          "OutSystems.ExternalLibraries.SDK": "1.4.0"
+        },
+        "runtime": {
+          "DoiTLean.NanoID.dll": {}
+        }
+      },
+      "Nanoid/3.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/Nanoid.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "OutSystems.ExternalLibraries.SDK/1.4.0": {
+        "runtime": {
+          "lib/net6.0/OutSystems.ExternalLibraries.SDK.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.4.0.60000"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DoiTLean.NanoID/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Nanoid/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TXFA+/K8CTID49Qn7upRKh1HK37GpLYh2EEKNvTTVo34G9AjorRrHYkhad5xeSxxlebvxAJJGs0lddQ706kjEQ==",
+      "path": "nanoid/3.0.0",
+      "hashPath": "nanoid.3.0.0.nupkg.sha512"
+    },
+    "OutSystems.ExternalLibraries.SDK/1.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LrQtKoI6v9+LOSfyWjoWNM2ZR3g565CDr2JZPnIY37pXaKH58J5WOf5T2evo8ZBP3UZuNvumISPFEcU2nOZs2A==",
+      "path": "outsystems.externallibraries.sdk/1.4.0",
+      "hashPath": "outsystems.externallibraries.sdk.1.4.0.nupkg.sha512"
+    }
+  }
+}
