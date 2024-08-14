@@ -1,0 +1,13 @@
+C:\Repo\odc-nanoid\DoiTLean.NanoID\bin\Debug\net8.0\DoiTLean.NanoID.deps.json
+C:\Repo\odc-nanoid\DoiTLean.NanoID\bin\Debug\net8.0\DoiTLean.NanoID.dll
+C:\Repo\odc-nanoid\DoiTLean.NanoID\bin\Debug\net8.0\DoiTLean.NanoID.pdb
+C:\Repo\odc-nanoid\DoiTLean.NanoID\obj\Debug\net8.0\DoiTLean.NanoID.csproj.AssemblyReference.cache
+C:\Repo\odc-nanoid\DoiTLean.NanoID\obj\Debug\net8.0\DoiTLean.NanoID.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repo\odc-nanoid\DoiTLean.NanoID\obj\Debug\net8.0\DoiTLean.NanoID.AssemblyInfoInputs.cache
+C:\Repo\odc-nanoid\DoiTLean.NanoID\obj\Debug\net8.0\DoiTLean.NanoID.AssemblyInfo.cs
+C:\Repo\odc-nanoid\DoiTLean.NanoID\obj\Debug\net8.0\DoiTLean.NanoID.csproj.CoreCompileInputs.cache
+C:\Repo\odc-nanoid\DoiTLean.NanoID\obj\Debug\net8.0\DoiTLean.NanoID.sourcelink.json
+C:\Repo\odc-nanoid\DoiTLean.NanoID\obj\Debug\net8.0\DoiTLean.NanoID.dll
+C:\Repo\odc-nanoid\DoiTLean.NanoID\obj\Debug\net8.0\refint\DoiTLean.NanoID.dll
+C:\Repo\odc-nanoid\DoiTLean.NanoID\obj\Debug\net8.0\DoiTLean.NanoID.pdb
+C:\Repo\odc-nanoid\DoiTLean.NanoID\obj\Debug\net8.0\ref\DoiTLean.NanoID.dll
