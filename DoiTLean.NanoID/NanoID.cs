@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Xml.Linq;
+using System;
 using NanoidDotNet;
 
 namespace DoiTLean.NanoID
@@ -10,22 +8,24 @@ namespace DoiTLean.NanoID
     /// </summary>
     public class NanoID : INanoID
     {
-
-
         /// <summary>
-        /// The default method uses URL-friendly symbols (A-Za-z0-9_-) and returns an ID with 21 characters (to have a collision probability similar to UUID v4).
+        /// Generates a NanoID whose sequence is deterministic for a given <paramref name="Seed"/>: calling this
+        /// repeatedly with the same <paramref name="Seed"/>, <paramref name="Size"/> and <paramref name="CustomAlphabet"/>
+        /// always returns the same ID. This is intentional and useful for reproducible scenarios (e.g. tests, fixtures),
+        /// but the output is NOT cryptographically random and must not be used where uniqueness/collision-avoidance
+        /// guarantees are required (e.g. primary keys). Use <see cref="Generate"/> for that instead.
         /// </summary>
-        /// <param name="RandomSize"></param>
+        /// <param name="RandomSize">Seed for the underlying pseudo-random generator. The same value always yields the same ID.</param>
         /// <param name="Size">If you want to reduce ID length (and increase collisions probability), you can pass the size as an argument</param>
         /// <param name="CustomAlphabet">If you want to change the ID&apos;s alphabet  you can pass alphabet as an argument.
-        /// 
+        ///
         /// Alphabet must contain 256 symbols or less. Otherwise, the generator will not be secure.</param>
-        /// <param name="ssNanoID"></param>
-        public void GenerateWithCustomRandomBytesGenerator(int RandomSize, out string NanoID, int Size = 21, string CustomAlphabet = "_-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        /// <param name="result"></param>
+        public void GenerateWithCustomRandomBytesGenerator(int RandomSize, out string result, int Size = 21, string CustomAlphabet = "_-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
         {
+            ValidateInputs(Size, CustomAlphabet);
             Random random = new Random(RandomSize);
-            NanoID = Nanoid.Generate(random, CustomAlphabet , Size);
-
+            result = Nanoid.Generate(random, CustomAlphabet, Size);
         } // GenerateWithCustomRandomBytesGenerator
 
         /// <summary>
@@ -33,15 +33,53 @@ namespace DoiTLean.NanoID
         /// </summary>
         /// <param name="Size">If you want to reduce ID length (and increase collisions probability), you can pass the size as an argument</param>
         /// <param name="CustomAlphabet">If you want to change the ID&apos;s alphabet  you can pass alphabet as an argument.
-        /// 
+        ///
         /// Alphabet must contain 256 symbols or less. Otherwise, the generator will not be secure.</param>
-        /// <param name="NanoID"></param>
-        public void Generate(out string NanoID,int Size = 21, string CustomAlphabet = "_-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        /// <param name="result"></param>
+        public void Generate(out string result, int Size = 21, string CustomAlphabet = "_-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
         {
-            NanoID = Nanoid.Generate(CustomAlphabet, Size); //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+            ValidateInputs(Size, CustomAlphabet);
+            result = Nanoid.Generate(CustomAlphabet, Size);
         } // Generate
 
+        /// <summary>
+        /// Clearly-named equivalent of <see cref="GenerateWithCustomRandomBytesGenerator"/>: generates a deterministic,
+        /// reproducible NanoID from a <paramref name="Seed"/>. Same seed, size and alphabet always produce the same ID.
+        /// Not cryptographically secure — do not use where uniqueness guarantees are required.
+        /// </summary>
+        /// <param name="Seed">Seed for the underlying pseudo-random generator. The same seed always yields the same ID.</param>
+        /// <param name="Size">If you want to reduce ID length (and increase collisions probability), you can pass the size as an argument</param>
+        /// <param name="CustomAlphabet">If you want to change the ID&apos;s alphabet you can pass alphabet as an argument.
+        ///
+        /// Alphabet must contain 256 symbols or less. Otherwise, the generator will not be secure.</param>
+        /// <param name="result"></param>
+        public void GenerateDeterministic(int Seed, out string result, int Size = 21, string CustomAlphabet = "_-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+        {
+            ValidateInputs(Size, CustomAlphabet);
+            Random random = new Random(Seed);
+            result = Nanoid.Generate(random, CustomAlphabet, Size);
+        } // GenerateDeterministic
 
+        /// <summary>
+        /// Validates inputs before they cross into the Nanoid library, so callers on the OutSystems side get a
+        /// clear, actionable exception instead of an opaque failure from a third-party dependency.
+        /// </summary>
+        private static void ValidateInputs(int size, string customAlphabet)
+        {
+            if (size <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(size), size, "Size must be greater than zero.");
+            }
 
+            if (string.IsNullOrEmpty(customAlphabet))
+            {
+                throw new ArgumentException("CustomAlphabet must not be null or empty.", nameof(customAlphabet));
+            }
+
+            if (customAlphabet.Length > 256)
+            {
+                throw new ArgumentException("CustomAlphabet must contain 256 symbols or less.", nameof(customAlphabet));
+            }
+        } // ValidateInputs
     }
 }
